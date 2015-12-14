@@ -1,18 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Flask Intro</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+{% extends "base.html" %}
+{% block content %}
 
-</head>
-<body>
-  <div class="container">
-    <h1>Welcome to Flask!</h2>
-      <br>
-      <p>Click <a href="/">here</a> to go home.</p>
-    </div>
-  </body>
-  </html>
+<h1>Welcome to Flask!</h1>
+<br>
+<p>Click <a href="/">here</a> to go home.</p>
+
+{% endblock %}

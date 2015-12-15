@@ -26,3 +26,9 @@ from app import db
 models import *
 db.session.add(BlogPost("Hi", "heroku python shell test"))
 db.session.commit()
+
+# login to postgres
+psql -U jeff -d test
+
+# change local environment to use postgres locally
+export DATABASE_URL="postgresql://jeff:finn7797@localhost:5432/flask_heroku_jr"

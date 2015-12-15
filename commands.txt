@@ -1,0 +1,5 @@
+# set environ for local dev
+export APP_SETTINGS="config.DevelopmentConfig"
+
+# set local db url
+export DATABASE_URL="sqlite:///posts.db"

@@ -14,4 +14,15 @@ heroku config:set APP_SETTINGS=config.ProductionConfig --remote heroku
 # add postgres to heroku production
 heroku addons:create heroku-postgresql:hobby-dev
 
-# Heroku Configuration Settings
+# if need be run this command, not nessasary if first db
+heroku pg:promote <DATABASE_URL>
+
+# Heroku Configuration postgres schema Settings
+heroku run python db_create.py
+
+# heroku add inserts to database from python shell
+heroku run python
+from app import db
+models import *
+db.session.add(BlogPost("Hi", "heroku python shell test"))
+db.session.commit()

@@ -9,6 +9,7 @@ class BaseConfig(object):
 
 
 class DevelopmentConfig(BaseConfig):
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
     DEBUG = True
 
 

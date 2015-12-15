@@ -7,3 +7,4 @@ export DATABASE_URL="sqlite:///posts.db"
 # generate a secret key from shell
 import os
 os.urandom(24)
+

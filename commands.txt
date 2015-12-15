@@ -13,3 +13,5 @@ heroku config:set APP_SETTINGS=config.ProductionConfig --remote heroku
 
 # add postgres to heroku production
 heroku addons:create heroku-postgresql:hobby-dev
+
+# Heroku Configuration Settings

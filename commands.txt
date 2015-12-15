@@ -9,4 +9,7 @@ import os
 os.urandom(24)
 
 # Heroku Configuration Settings
-heroku config:set APP_SETTINGS=config.ProjectionConfig --remote heroku
+heroku config:set APP_SETTINGS=config.ProductionConfig --remote heroku
+
+# add postgres to heroku production
+heroku addons:create heroku-postgresql:hobby-dev

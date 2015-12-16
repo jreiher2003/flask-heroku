@@ -34,3 +34,13 @@ psql -U jeff -d test
 # change local environment to use postgres  locally
 export DATABASE_URL="postgresql://jeff:finn7797@localhost:5432/flask_heroku_jr"
 set DATABASE_URL=postgresql://jeff:finn7797@localhost:5432/flask_heroku_jr
+
+#### flask-migrate
+## create a new migration db
+python manage.py db init
+
+## 2nd step make changes to models.py file and run command to make the migration scripts
+python manage.py db migrate
+
+## 3rd step open migration script check to make sure it is all good. then run 
+python manage.py db upgrade

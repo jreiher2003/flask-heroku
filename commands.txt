@@ -44,3 +44,9 @@ python manage.py db migrate
 
 ## 3rd step open migration script check to make sure it is all good. then run 
 python manage.py db upgrade
+
+## 4th step apply db upgrades to heroku's db
+heroku run python manage.py db upgrade
+
+## 5th step get into heroku psql shell and do a manuel update to match local db
+heroku pg:psql

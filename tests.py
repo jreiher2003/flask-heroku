@@ -1,4 +1,5 @@
-from app import app
+from project import app
+from project import bcrypt
 import unittest
 
 

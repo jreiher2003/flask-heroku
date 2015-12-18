@@ -1,15 +1,26 @@
 #################
 #### imports ####
 #################
-from project import app, db
+
+from project import db
 from project.models import BlogPost
 from flask import flash, redirect, session, url_for, render_template, Blueprint
 from functools import wraps
 
+################
+#### config ####
+################
+
 home_blueprint = Blueprint(
     'home', __name__,
-    template_folder="templates"
+    template_folder='templates'
 )
+
+
+##########################
+#### helper functions ####
+##########################
+
 
 def login_required(test):
     @wraps(test)

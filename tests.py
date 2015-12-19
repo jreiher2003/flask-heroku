@@ -1,5 +1,5 @@
-from project import app
-from project import bcrypt
+from project.home import app
+from project.user import bcrypt
 import unittest
 
 

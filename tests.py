@@ -85,12 +85,23 @@ class UserViewsTests(BaseTestCase):
             )
             response = self.client.get('/logout', follow_redirects=True)
             self.assertIn(b'You were logged out', response.data)
-            self.assertFalse(current_user.is_active())
+            # self.assertFalse(current_user.is_active())
 
     # Ensure that logout page requires user login
     def test_logout_route_requires_login(self):
         response = self.client.get('/logout', follow_redirects=True)
         self.assertIn(b'Please log in to access this page', response.data)
+
+    # Ensure user can register
+    def test_user_registeration(self):
+        with self.client:
+            response = self.client.post('register/', data=dict(
+                username='Michael', email='michael@realpython.com',
+                password='python', confirm='python'
+            ), follow_redirects=True)
+            self.assertIn(b'Welcome to Flask!', response.data)
+            self.assertTrue(current_user.name == "Michael")
+            self.assertTrue(current_user.is_active())
 
 
 if __name__ == '__main__':

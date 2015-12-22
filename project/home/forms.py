@@ -1,6 +1,6 @@
-from flask_wtf import Form
-from wtforms import TextField, TextAreaField
-from wtforms.validators import DataRequired, Length
+from flask_wtf import Form # pragma: no cover
+from wtforms import TextField, TextAreaField # pragma: no cover
+from wtforms.validators import DataRequired, Length # pragma: no cover
 
 
 class MessageForm(Form):

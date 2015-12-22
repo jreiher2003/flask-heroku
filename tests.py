@@ -16,8 +16,10 @@ class BaseTestCase(TestCase):
 
     def setUp(self):
         db.create_all()
-        db.session.add(BlogPost("Test post", "This is a test. Only a test."))
         db.session.add(User("admin", "ad@min.com", "admin"))
+        db.session.add(BlogPost("Test post", 
+                                "This is a test. Only a test.", 
+                                "admin"))
         db.session.commit()
 
     def tearDown(self):
@@ -35,7 +37,7 @@ class FlaskTestCase(BaseTestCase):
     # Ensure that main page requires user login
     def test_main_route_requires_login(self):
         response = self.client.get('/', follow_redirects=True)
-        self.assertIn(b'Please log in to access this page', response.data)
+        self.assertIn(b'You need to login first', response.data)
 
     # Ensure that posts show up on the main page
     def test_posts_show_up_on_main_page(self):
@@ -90,7 +92,7 @@ class UserViewsTests(BaseTestCase):
     # Ensure that logout page requires user login
     def test_logout_route_requires_login(self):
         response = self.client.get('/logout', follow_redirects=True)
-        self.assertIn(b'Please log in to access this page', response.data)
+        self.assertIn(b'You need to login first', response.data)
 
     # Ensure user can register
     def test_user_registeration(self):

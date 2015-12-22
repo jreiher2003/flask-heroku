@@ -35,14 +35,17 @@ def home():
             form.description.data,
             current_user.id
         )
+
         db.session.add(new_message)
         db.session.commit()
-        flash('New entry was successfully posted. Thanks.')
+        flash('New entry was successfully posted. Thanks.', 'bg-success')
         return redirect(url_for('home.home'))
     else:
+        # current_u = current_user()
         posts = db.session.query(BlogPost).all()
+        u_posts = db.session.query(User,BlogPost).filter(current_user.id==BlogPost.author_id)
         return render_template(
-            'index.html', posts=posts, form=form, error=error)
+            'index.html', posts=posts, form=form, u_posts=u_posts, error=error)
 
 
 @home_blueprint.route('/welcome')

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
 <h1>Welcome to Flask!</h1>
 <br>
 <p>Click <a href="/logout">here</a> to logout.</p>
@@ -11,27 +12,34 @@
 <br>
 <form class="form-message" role="form" method="post" action="/">
   {{ form.csrf_token }}
-  <p>
-    {{ form.title(placeholder="title") }}
-    <span class="error">
+
+  <div class="form-group">
+  	 <label for="title">Title</label>
+    {{ form.title(class="form-control", placeholder="title") }}
+  </div>
+
+    <span class="error bg-danger">
       {% if form.title.errors %}
         {% for error in form.title.errors %}
           {{ error }}
         {% endfor %}
       {% endif %}
     </span>
-  </p>
-  <p>
-  {{ form.description(placeholder="description") }}
-    <span class="error">
+  
+  <div class="form-group">
+  	 <label for="description">Description</label>
+  {{ form.description(class="form-control", rows="5", placeholder="description") }}
+	</div>
+
+    <span class="error bg-danger">
       {% if form.description.errors %}
         {% for error in form.description.errors %}
           {{ error }}
         {% endfor %}
       {% endif %}
     </span>
-  </p>
-  <button class="btn btn-sm btn-success" type="submit">Post</button>
+ 
+  <button class="btn btn-lg btn-success" type="submit">Post</button>
 </form>
 
 <!-- All posts -->
@@ -43,4 +51,22 @@
 <br>
 {% endfor %}
 
+ {% if current_user.is_active %}
+<!-- User posts -->
+{{ current_user.name }}<br>
+{{ current_user.email }}
+<br><br>
+{% for u, p in u_posts %}
+<!-- {{ u_posts.title }} -->
+  <!-- {{ u.email }} -->
+  {{ u.name }}
+  {{ p.title }}<br>
+  {{ p.description }}<br>
+  <!-- {{ p.author_id }}<br><br> -->
+  <br>
+  {% endfor %}
+ 
+{% endif %}
+</div>
+</div>
 {% endblock %}

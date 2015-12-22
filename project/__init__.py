@@ -29,6 +29,8 @@ app.register_blueprint(home_blueprint)
 from models import User
 
 login_manager.login_view = "users.login"
+login_manager.login_message = u'You need to login first'
+login_manager.login_message_category = 'bg-info' 
 
 # loads users info from db and stores it in a session
 @login_manager.user_loader

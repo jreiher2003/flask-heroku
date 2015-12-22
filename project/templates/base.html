@@ -12,6 +12,15 @@
  <body>
 
     <div class="container">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      <ul class="{{ category }}">
+        {% for category, message in messages %}
+        <div class="{{ category }}">{{ message }}</div>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
 
       <!-- child template -->
       {% block content %}{% endblock %}
@@ -22,9 +31,6 @@
       {% endif %}
 
       <!-- messages -->
-      {% for message in get_flashed_messages() %}
-        {{ message }}
-      {% endfor %}
     </div>
 
   </body>

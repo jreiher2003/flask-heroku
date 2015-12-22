@@ -32,7 +32,7 @@ def login():
             ):
                 # session['logged_in'] = True
                 login_user(user)
-                flash('You were logged in. Go Crazy.')
+                flash('You were logged in. Go Crazy.', 'bg-success')
                 return redirect(url_for('home.home'))
 
             else:
@@ -44,7 +44,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    flash('You were logged out.')
+    flash('You were logged out.', 'bg-danger')
     return redirect(url_for('home.welcome'))
 
 

@@ -27,10 +27,7 @@ def login():
     if request.method == 'POST':
         if form.validate_on_submit():
             user = User.query.filter_by(name=request.form['username']).first()
-            if user is not None and bcrypt.check_password_hash(
-                user.password, request.form['password']
-            ):
-                # session['logged_in'] = True
+            if user is not None and bcrypt.check_password_hash(user.password, request.form['password']):
                 login_user(user)
                 flash('You were logged in. Go Crazy.', 'bg-success')
                 return redirect(url_for('home.home'))
